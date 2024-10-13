@@ -65,7 +65,7 @@
         <div id="about-container"></div>
       </calcite-panel>
       <calcite-panel heading="Add a Kolache location" height-scale="l" data-panel-id="survey" hidden>
-        <div id="survey-container-container"></div>
+        <div id="survey-container"></div>
       </calcite-panel>
       <calcite-panel heading="Layers" height-scale="l" data-panel-id="layers" hidden>
         <div id="layers-container"></div>
@@ -80,17 +80,17 @@
         <div id="attributions-container"></div>
       </calcite-panel>
 
-              <!-- Add a Kolache panel -->
-              <calcite-panel height-scale="l" heading="Add a Dragon" data-panel-id="addDragon" hidden>
-                <div id="addDragon-container">
+      <!-- Add a Kolache panel -->
+        <calcite-panel height-scale="l" heading="Add a Kolache" data-panel-id="addDragon" hidden>
+                <div id="survey-container">
                   <h4 style="margin-top:0;">Submission Guidelines:</h4>
-                  <p>Click the button below to contribute a dragon to the dragon database. This will open a new page with Survey123. Please follow the guided survey with a submission.</p>
+                  <p>Click the button below to contribute a kolache to the kolache database. This will open a new page with Survey123. Please follow the guided survey with a submission.</p>
                   <div style="display:flex; margin: 1rem 1rem;">
-                    <calcite-button href="https://arcg.is/1reu9q" icon-end="launch" label="Open Dragon Database Survey123 Link" target="_blank" style="margin:auto;"> Open Dragon Database Survey
-                    </calcite-button>
-                  </div>
-                </div>
-              </calcite-panel>
+            <calcite-button href="https://arcg.is/9Pmm9" icon-end="launch" label="Open Kolache Database Survey123 Link" target="_blank" style="margin:auto;"> Open Dragon Database Survey
+            </calcite-button>
+            </div>
+        </div>
+      </calcite-panel>
 
       <!-- Info panel (populates with info from the web map) -->
       <calcite-panel heading="Details" data-panel-id="information" hidden>
@@ -121,7 +121,7 @@
     "esri/widgets/Attribution",
     "esri/widgets/Search",
   ], function (WebMap, MapView,BasemapGallery, LayerList, Legend, Attribution, Search) {
-    const webmapId = new URLSearchParams(window.location.search).get("webmap") ?? "210c5b77056846808c7a5ce93920be81";
+    const webmapId = new URLSearchParams(window.location.search).get("webmap") ?? "bd1fdb61c213433a8c5569f6520d40a3";
 
     const map = new WebMap({
       portalItem: {
