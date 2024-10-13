@@ -51,19 +51,20 @@
 
     <calcite-shell-panel slot="panel-start" display-mode="float">
       <calcite-action-bar slot="action-bar">
-        <calcite-action data-action-id="about" icon="asterisk-large" text="About"></calcite-action>
-        <calcite-action data-action-id="survey" icon="plus-circle" text="Add Kolache location"></calcite-action>
-        <calcite-action data-action-id="layers" icon="layers" text="Layers"></calcite-action>
-        <calcite-action data-action-id="basemaps" icon="basemap" text="Basemaps"></calcite-action>
-        <calcite-action data-action-id="legend" icon="legend" text="Legend"></calcite-action>
-        <calcite-action data-action-id="information" icon="information" text="Information"></calcite-action>
-        <calcite-action data-action-id="credits" icon="credits" text="Credits"></calcite-action>
+        <calcite-action data-action-id="about" icon="information" text="Information about application"></calcite-action>
+        <calcite-action data-action-id="survey" icon="plus-circle" text="Add a kolache location"></calcite-action>
+        <calcite-action data-action-id="layers" icon="layers" text="Show Layers"></calcite-action>
+        <calcite-action data-action-id="basemaps" icon="basemap" text="Change Basemap"></calcite-action>
+        <calcite-action data-action-id="legend" icon="legend" text="Show Legend"></calcite-action>
+        <!--<calcite-action data-action-id="information" icon="information" text="Information"></calcite-action> -->
+        <calcite-action data-action-id="search" icon="search" text="Search for address"></calcite-action>
+        <calcite-action data-action-id="credits" icon="credits" text="Source Credit"></calcite-action>
       </calcite-action-bar>
 
       <!-- Map-specific panels (each one provides a div for a ArcGIS Maps SDK for JavaScript widget) -->
-      <calcite-panel heading="About" height-scale="l" data-panel-id="about" hidden>
+      <!--<calcite-panel heading="About" height-scale="l" data-panel-id="about" hidden>
         <div id="about-container"></div>
-      </calcite-panel>
+      </calcite-panel> --> 
       <!--<calcite-panel heading="Add a Kolache location" height-scale="l" data-panel-id="survey" hidden>
         <div id="survey-container"></div>
       </calcite-panel> -->
@@ -76,9 +77,21 @@
       <calcite-panel heading="Legend" height-scale="l" data-panel-id="legend" hidden>
         <div id="legend-container"></div>
       </calcite-panel>
-      <!--<calcite-panel heading="Credits" height-scale="l" data-panel-id="credits" hidden>
-        <div id="credits-container"></div>
-      </calcite-panel> -->
+      <calcite-panel heading="Search" height-scale="l" data-panel-id="search" hidden>
+        <div id="search-container"></div>
+      </calcite-panel>
+
+      <!-- Add About panel -->
+        <calcite-panel height-scale="l" heading="About this map" data-panel-id="about" hidden>
+                <div id="about-container">
+                  <h4 style="margin-top:0;">  Welcome!:</h4>
+                  <p>  This map is inspired by the Kolache Trail in Texas. Please feel free to add your input with the survey form
+                    by clicking the "plus" button.
+                  </p>
+                  <div style="display:flex; margin: 1rem 1rem;">
+            </div>
+        </div>
+      </calcite-panel>
 
       <!-- Add a Kolache panel -->
         <calcite-panel height-scale="l" heading="Add a Kolache location" data-panel-id="survey" hidden>
@@ -94,7 +107,7 @@
 
       <!-- Info panel (populates with info from the web map) -->
       <calcite-panel heading="Details" data-panel-id="information" hidden>
-        <div id="info-content">
+        <div id="information-content">
           <img id="item-thumbnail" alt="webmap thumbnail" />
           <div id="item-description">
             <!-- Dynamically populated -->
@@ -112,8 +125,7 @@
       <!-- Credit panel -->
         <calcite-panel height-scale="l" heading="Credits" data-panel-id="credits" hidden>
           <div id="credits-container">
-            <h4 style="margin-top:0;">Many Thanks:</h4>
-            <p>Data Sources</p>
+            <h4 style="margin-top:0;">Many Thanks: Information Sources </h4>
             <ol>
               <li><a href="https://www.slovacekwesttexas.com/bakery/">Slovaceks in West, Texas:</a></li>
               <li><a href="https://sjbakery.net/breakfast-items">S&J Bakery, Corpus Christi, Texas</a></li>
@@ -122,7 +134,7 @@
               <li><a href="https://csnews.com/buc-ees-wins-trademark-infringement-fight-against-competing-texas-travel-stop">Copyright LogoBuc-ees Logo:</a></li>
               <li><a href="https://www.google.com">Buc-ees Feature Class: local copy</a></li>
               <li><a href="https://hub.arcgis.com/maps/esri::newspaper-map/about">Basemap: Newpaper map Cindy Prostak, ESRI</a></li>
-              <li><a href="https://fonts.google.com/"></a>Google Fonts: </li>
+              <li><a href="https://fonts.google.com/">Google Fonts </a></li>
               <li><a href="https://www.flaticon.com/free-icon/meat-pie_490997">Kolache Icons:</a></li>
             </ol>
             <div style="display:flex; margin: 1rem 1rem;">
@@ -160,14 +172,6 @@
     });
 
     view.ui.move("zoom", "top-left");
-
-    // fix this with the correct widget and panel information
-    // rename CREDITS
-    //const about = new About({
-      //view,
-      //container: "about-container"
-    //});
-
 
     const basemaps = new BasemapGallery({
       view,
