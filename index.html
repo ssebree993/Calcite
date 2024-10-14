@@ -3,7 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>Calcite Components: Create a mapping app</title>
+  <title>Kolache Locator</title>
+    <link rel="icon" type="image/x-icon" href="meat_pie_color.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sixtyfour+Convergence&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 
   <script src="https://js.arcgis.com/calcite-components/2.13.0/calcite.esm.js" type="module"></script>
   <link rel="stylesheet" href="https://js.arcgis.com/calcite-components/2.13.0/calcite.css" />
@@ -23,6 +32,31 @@
     width: 100%;
   }
 
+  #header-title {
+      padding: 0 1rem;
+      margin: 0.4rem 0.4rem;
+      font-family: 'Sixtyfour Convergence', serif;
+      font-size: 1.5rem;
+    }
+
+  #font-family {
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+  }
+
+#font-family {
+  font-family: "Sixtyfour Convergence", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "BLED" 0,
+    "SCAN" 0,
+    "XELA" 0,
+    "YELA" 0;
+}
   body {
     display: flex;
   }
@@ -35,7 +69,11 @@
   #info-content {
     padding: 0.75rem;
   }
+  
 
+.my-paragraph {
+   color: rgb(30, 29, 27);
+}
   calcite-rating {
     margin-top: 0.25rem;
   }
@@ -45,12 +83,11 @@
   <!-- Add a loader to the page -->
   <!-- Header title disappeared after editor added -->
   <calcite-loader></calcite-loader>
-  <calcite-shell content-behind>
-    <calcite-navigation slot="header">
-      <calcite-navigation-logo id="header-title" heading-level="1" slot="logo">
-        <!-- Dynamically populated -->
-      </calcite-navigation-logo>
-    </calcite-navigation>
+  <calcite-shell content-behind hidden>
+    <h2 id="header-title" slot="header">
+      <span style="font-style: Sixtyfour Convergence;">Kolache Finder Road Trip 2024</span>
+    </h2>
+
     <!-- Add a floating panel to the page with action slots -->
     <calcite-shell-panel slot="panel-start" display-mode="float">
       <calcite-action-bar slot="action-bar">
@@ -85,9 +122,8 @@
       <!-- Add About panel -->
       <calcite-panel height-scale="l" heading="About this map" data-panel-id="about" hidden>
         <div id="about-container">
-          <h4 style="margin-top:0;">Welcome!</h4>
-          <p>This map is inspired by the Kolache Trail in Texas. Please feel free to add your input with the survey form
-            by clicking the "plus" button.
+          <h4 style="color: rgba(236, 40, 40, 0.608); style="margin-top:0;">Welcome!</h4>
+          <p class="my-paragraph" >This map is inspired by the Kolache Trail in Texas. Please feel free to add your own kolache by clicking the "plus" button below.
           </p>
           <div style="display:flex; margin: 1rem 1rem;">
           </div>
