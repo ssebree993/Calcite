@@ -21,21 +21,16 @@
     height: 100%;
     width: 100%;
   }
-
-
   body {
     display: flex;
   }
-
   calcite-loader {
     align-self: center;
     justify-self: center;
   }
-
   #info-content {
     padding: 0.75rem;
   }
-
   calcite-rating {
     margin-top: 0.25rem;
   }
@@ -60,6 +55,7 @@
         <calcite-action data-action-id="legend" icon="legend" text="Show Legend"></calcite-action>
         <!--<calcite-action data-action-id="information" icon="information" text="Information"></calcite-action> -->
         <calcite-action data-action-id="search" icon="search" text="Search for address"></calcite-action>
+        <calcite-action data-action-id="editor" icon="layers-editable" text="Editor"></calcite-action>
         <calcite-action data-action-id="credits" icon="credits" text="Source Credit"></calcite-action>
       </calcite-action-bar>
 
@@ -76,6 +72,9 @@
       </calcite-panel>
       <calcite-panel heading="Search" height-scale="l" data-panel-id="search" hidden>
         <div id="search-container"></div>
+      </calcite-panel>
+      <calcite-panel heading="Editor" height-scale="l" data-panel-id="editor" hidden>
+        <div id="editor-container"></div>
       </calcite-panel>
 
       <!-- Add About panel -->
@@ -136,7 +135,8 @@
     "esri/widgets/LayerList",
     "esri/widgets/Legend",
     "esri/widgets/Search",
-  ], function (WebMap, MapView,BasemapGallery, LayerList, Legend, Search) {
+    "esri/widgets/Editor"
+  ], function (WebMap, MapView,BasemapGallery, LayerList, Legend, Search, Editor) {
     const webmapId = new URLSearchParams(window.location.search).get("webmap") ?? "bd1fdb61c213433a8c5569f6520d40a3";
     // create the WebMap instance
     const map = new WebMap({
@@ -177,6 +177,19 @@
       view,
       container: "search-container"
     });
+
+    // add editor widget
+    const editor = new Editor({
+      view,
+      container: "editor-container"
+    });
+    
+    // Adding results_feature layer doubles the available Kolache layer
+    //const featureLayer = new FeatureLayer({
+      //url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/survey123_90dfb79478e54045aa7bf05431f648df_results/FeatureServer/0"
+    //});
+
+    // map.add(featureLayer);
 
     // add actions to the action bar
     map.when(() => {
