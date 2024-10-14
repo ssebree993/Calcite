@@ -180,9 +180,10 @@
 
     // add editor widget
     const editor = new Editor({
-      view,
+      view:view,   // view that provides access to the map's "layers" property
       container: "editor-container"
     });
+    
     
     // Adding results_feature layer doubles the available Kolache layer
     //const featureLayer = new FeatureLayer({
