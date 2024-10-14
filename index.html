@@ -164,8 +164,9 @@
     "esri/widgets/LayerList",
     "esri/widgets/Legend",
     "esri/widgets/Search",
-    "esri/widgets/Editor"
-  ], function (WebMap, MapView, BasemapGallery, LayerList, Legend, Search, Editor) {
+    "esri/widgets/Editor",
+    "esri/widgets/Locate"
+  ], function (WebMap, MapView, BasemapGallery, LayerList, Legend, Search, Editor, Locate) {
     const webmapId = new URLSearchParams(window.location.search).get("webmap") ?? "bd1fdb61c213433a8c5569f6520d40a3";
     // create the WebMap instance
     const map = new WebMap({
@@ -213,6 +214,16 @@
       view, // view that provides access to the map's "layers" property
       container: "editor-container"
     });
+
+    // add locate widget
+    const locateBtn = new Locate({
+                view: view
+            });
+    // add locate widget button top right
+    view.ui.add(locateBtn, {
+                position: "top-right",
+                index: 2
+            });
 
     // add actions to the action bar
     map.when(() => {
