@@ -215,11 +215,13 @@
       container: "editor-container"
     });
 
-    // add locate widget
+    // add locate widget Creates a new instance of the Locate widget, passing the view object as a parameter. 
+    //This object represents the map view where the widget will be displayed.
     const locateBtn = new Locate({
                 view: view
             });
-    // add locate widget button top right
+
+    // add locate widget button top right, stack order 2
     view.ui.add(locateBtn, {
                 position: "top-right",
                 index: 2
