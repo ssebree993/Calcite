@@ -135,8 +135,9 @@
     "esri/widgets/LayerList",
     "esri/widgets/Legend",
     "esri/widgets/Search",
-    "esri/widgets/Editor"
-  ], function (WebMap, MapView,BasemapGallery, LayerList, Legend, Search, Editor) {
+    "esri/widgets/Editor", 
+    "esri/widgets/Locate"
+  ], function (WebMap, MapView,BasemapGallery, LayerList, Legend, Search, Editor, Locate) {
     const webmapId = new URLSearchParams(window.location.search).get("webmap") ?? "bd1fdb61c213433a8c5569f6520d40a3";
     // create the WebMap instance
     const map = new WebMap({
@@ -184,14 +185,12 @@
       container: "editor-container"
     });
     
+    // add locate widget
+    const locate = new Locate({
+      view,
+      container: "locate-container"
+    });
     
-    // Adding results_feature layer doubles the available Kolache layer
-    //const featureLayer = new FeatureLayer({
-      //url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/survey123_90dfb79478e54045aa7bf05431f648df_results/FeatureServer/0"
-    //});
-
-    // map.add(featureLayer);
-
     // add actions to the action bar
     map.when(() => {
       //const { title, description, thumbnailUrl, avgRating } = map.portalItem;
