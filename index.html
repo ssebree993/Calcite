@@ -156,6 +156,14 @@
 
     // move zoom to top right to match wireframe
     view.ui.move("zoom", "top-right");
+
+    // add locate widget to the top-right corner
+    const locateWidget = new Locate({
+      view: view
+    });
+    view.ui.add(locateWidget, {
+      position: "top-right"
+    });
     // add basemap gallery widget
     const basemaps = new BasemapGallery({
       view,
@@ -185,12 +193,7 @@
       container: "editor-container"
     });
     
-    // add locate widget
-    const locate = new Locate({
-      view,
-      container: "locate-container"
-    });
-    
+   
     // add actions to the action bar
     map.when(() => {
       //const { title, description, thumbnailUrl, avgRating } = map.portalItem;
