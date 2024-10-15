@@ -1,0 +1,23 @@
+Source: https://developers.arcgis.com/javascript/latest/api-reference/esri-rest-support-Query.html
+require(["esri/rest/support/Query"], (Query) => { /* code goes here */ });
+
+County feature for the usa
+subset = Washington State
+
+let query = featureLayer.createQuery();
+query.where = "STATE_NAME = 'Washington'";
+query.outFields = [ "STATE_NAME", "COUNTY_NAME", "POPULATION", "(POPULATION / AREA) as 'POP_DENSITY'" ];
+
+featureLayer.queryFeatures(query)
+  .then(function(response){
+     // returns a feature set with features containing the following attributes
+     // STATE_NAME, COUNTY_NAME, POPULATION, POP_DENSITY
+   });
+
+// create a new query object
+// query for the sum of the population in all features
+let sumPopulation = {
+  onStatisticField: "POP_2015",  // service field for 2015 population
+  outStatisticFieldName: "Pop_2015_sum",
+  statisticType: "sum"
+};
