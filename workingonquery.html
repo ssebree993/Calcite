@@ -180,7 +180,7 @@
     "esri/widgets/Legend",
     "esri/widgets/Search",
     "esri/widgets/Editor",
-    "esri/rest/locator"  
+    "esri/rest/locator"
   ], function (WebMap, MapView, BasemapGallery, LayerList, Legend, Search, Editor, Locator) {
     const webmapId = new URLSearchParams(window.location.search).get("webmap") ?? "bd1fdb61c213433a8c5569f6520d40a3";
     // create the WebMap instance
@@ -247,6 +247,14 @@ function findPlaces(category, location) {
   view.when(function() {
     findPlaces("Coffee Shop", view.center);
   });
+
+  // Feature Layer for query -- not sure how to query KOLACHE in WebMap to display OR set up map without mapview
+    //url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/survey123_90dfb79478e54045aa7bf05431f648df/FeatureServer/0",
+    //outFields: ["what_is_the_food_name", "what_is_the_food_type", "what_is_the_food_description", "what_is_the_food_rating", "what_is_the_food_picture"],
+    //title: "Kolache2",
+  //});
+
+const query = new Query({where: "1=1"});
 
 
     // add actions to the action bar
