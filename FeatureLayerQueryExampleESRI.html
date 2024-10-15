@@ -57,8 +57,8 @@
           // national parks layer
           const layer = new FeatureLayer({
             url: "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/US_National_Parks_Annual_Visitation/FeatureServer/0",
-            outFields: ["*"],
-            renderer: await setRenderer(),
+            outFields: ["*"],  // all fields
+            renderer: await setRenderer(), // set renderer, but wait for loading
             popupTemplate: createPopupTemplate()
           });
 
