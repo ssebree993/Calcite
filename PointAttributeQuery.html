@@ -28,26 +28,26 @@
             const view = new MapView({
                 container: "viewDiv", // Reference to the DOM node that will contain the view
                 map: map, // Reference to the map object created before the view
-                zoom: 7, // Sets the zoom level based on level of detail (LOD)
+                zoom: 4, // Sets the zoom level based on level of detail (LOD)
                 center: [-78, 41] // Sets the center point of view in lon/lat
             });
             
             // Create a new FeatureLayer and set its properties
-            const cities = new FeatureLayer({
+            const kolache = new FeatureLayer({
                 portalItem: {
-                    id: "5af96a04ef4c4d8a9bb2a9dd2c883e36" // Portal item ID for the feature layer
+                    id: "0d000052dc8940e6bb17e93028c00d72" // Portal item ID for the feature layer
                 },
-                definitionExpression: "UNIVERSITY = 1" // SQL expression to filter features
+                definitionExpression: "Kolache_filling = 'Meat'" // SQL expression to filter features
             });
             
             // When the cities layer is loaded, log the alias of the "NAME" field
-            cities.when(function() {
-                const nameField = cities.fieldsIndex.get("NAME");    
+            kolache.when(function() {
+                const nameField = kolache.fieldsIndex.get("Kolache_filling");    
                 console.log(nameField.alias);
             });
             
             // Add the cities layer to the map
-            map.add(cities);
+            map.add(kolache);
             
         });
     </script>
