@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TestPointQuery</title>
+    <title>ArcGIS Maps SDK for JavaScript Tutorials: Query a feature layer (SQL)</title>
+    <style>
+        html, body, #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+        .esri-ui-corner .esri-component.esri-widget--panel {
+            width: 200px !important;
+        }
+    </style>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.30/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.30/"></script>
+</head>
+<body>
+    <div id="viewDiv"></div>
+    <script>
+        require([
+            "esri/config",
+            "esri/Map",
+            "esri/views/MapView",
+            "esri/layers/FeatureLayer",
+            "esri/rest/support/Query"
+        ], function(esriConfig, Map, MapView, FeatureLayer, Query) {
+            esriConfig.apiKey = "AAPKfc7af196c6e64aac988bbf7529dccd648UR6aqr1HCuaJ5GN7OXourF3WZ9GF_b8R9-mMcrEZMHlZzpuLXHwt5iwInOA9k4J";
+            
+            var map = new Map({
+                basemap: "streets"
+            });
+
+            var view = new MapView({
+                container: "viewDiv",
+                map: map,
+                center: [-118.71511, 34.09042], // Longitude, latitude
+                zoom: 3
+            });
+
+            var featureLayer = new FeatureLayer({
+                url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/survey123_90dfb79478e54045aa7bf05431f648df_results/FeatureServer",
+            });
+
+            map.add(featureLayer);
+
+            view.when(function() {
+                var query = featureLayer.createQuery();
+                //query.where = "Kolache filling = 'Meat'"; // SQL where clause
+                query.where = "Kolache_filling = 'Meat'";
+                query.outFields = ["*"]; // Return all fields
+                query.returnGeometry = true;
+
+                //var query = featureLayer.createQuery();
+                //query.where = "STATE_NAME = 'Washington'";
+                //query.outFields = [ "STATE_NAME", "COUNTY_NAME", "POPULATION", "(POPULATION / AREA) as 'POP_DENSITY'" ];
+
+                //featureLayer.queryFeatures(query)
+                //.then(function(response){
+            // returns a feature set with features containing the following attributes
+            // STATE_NAME, COUNTY_NAME, POPULATION, POP_DENSITY
+            // });
+
+                featureLayer.queryFeatures(query).then(function(result) {
+                    console.log(result.features); // Handle the results here
+                });
+            });
+        });
+    </script>
+</body>
+</html>

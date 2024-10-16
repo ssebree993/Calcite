@@ -1,3 +1,33 @@
+<!--
+
+This HTML file sets up a web application titled "Kolache Locator" using the ArcGIS API for JavaScript and Calcite Components. 
+The application includes various UI elements such as a loader, a shell with a header, action bar, and multiple panels for different functionalities like layers, basemaps, legend, search, editor, and more.
+
+Key Components:
+- Meta tags for character set and viewport settings.
+- Links to external resources including Google Fonts, Calcite Components, and ArcGIS API for JavaScript.
+- Inline CSS for styling the HTML elements.
+- Calcite Components for UI elements like loader, shell, action bar, and panels.
+- JavaScript code to initialize the ArcGIS WebMap, MapView, and various widgets (BasemapGallery, LayerList, Legend, Search, Editor).
+- Event handling for action bar clicks to toggle visibility of different panels.
+- Function to find places using the ArcGIS Locator service.
+
+Usage:
+- The application displays a map with various interactive widgets.
+- Users can interact with the action bar to toggle different panels for layers, basemaps, legend, search, editor, and more.
+- The "About" panel provides information about the map and its inspiration.
+- The "Survey" panel allows users to add new kolache locations via a Survey123 link.
+- The "Credits" panel lists various information sources and credits.
+
+Dependencies:
+- ArcGIS API for JavaScript
+- Calcite Components
+- Google Fonts
+
+Note:
+- Ensure the API key for ArcGIS is correctly set in the JavaScript code.
+- The application dynamically adjusts the view padding based on the action bar's expanded state.
+-->
 <html>
 
 <head>
@@ -181,8 +211,9 @@
     "esri/widgets/Legend",
     "esri/widgets/Search",
     "esri/widgets/Editor",
-    "esri/rest/locator"
-    ], function (esriConfig,WebMap, MapView, BasemapGallery, LayerList, Legend, Search, Editor, Locator) {
+    "esri/rest/locator",
+    "esri/layers/FeatureLayer",
+    ], function (esriConfig,WebMap, MapView, BasemapGallery, LayerList, Legend, Search, Editor, Locator, FeatureLayer) {
     const webmapId = new URLSearchParams(window.location.search).get("webmap") ?? "bd1fdb61c213433a8c5569f6520d40a3";
     // set the API key
     esriConfig = "AAPKfc7af196c6e64aac988bbf7529dccd648UR6aqr1HCuaJ5GN7OXourF3WZ9GF_b8R9-mMcrEZMHlZzpuLXHwt5iwInOA9k4J";
