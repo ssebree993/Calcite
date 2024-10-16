@@ -173,6 +173,7 @@
 
 <script>
   require([
+    "esri/config",
     "esri/WebMap",
     "esri/views/MapView",
     "esri/widgets/BasemapGallery",
@@ -180,9 +181,11 @@
     "esri/widgets/Legend",
     "esri/widgets/Search",
     "esri/widgets/Editor",
-    "esri/rest/locator",
-    ], function (WebMap, MapView, BasemapGallery, LayerList, Legend, Search, Editor, Locator) {
+    "esri/rest/locator"
+    ], function (esriConfig,WebMap, MapView, BasemapGallery, LayerList, Legend, Search, Editor, Locator) {
     const webmapId = new URLSearchParams(window.location.search).get("webmap") ?? "bd1fdb61c213433a8c5569f6520d40a3";
+    // set the API key
+    esriConfig = "AAPKfc7af196c6e64aac988bbf7529dccd648UR6aqr1HCuaJ5GN7OXourF3WZ9GF_b8R9-mMcrEZMHlZzpuLXHwt5iwInOA9k4J";
     // create the WebMap instance
     const map = new WebMap({
       portalItem: {
