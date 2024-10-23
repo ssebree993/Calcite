@@ -261,8 +261,12 @@ Note:
 
     // add editor widget
     const editor = new Editor({
-      view, // view that provides access to the map's "layers" property
-      container: "editor-container"
+      view: view, // view that provides access to the map's "layers" property
+      container: "editor-container",
+      //override the ability to add data from Editor
+      visibleElements: {
+              createFeaturesSection: false
+            }
     });
 
     // Locator URL
