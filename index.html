@@ -110,14 +110,13 @@ Note:
     <!-- Add a floating panel to the page with action slots -->
     <calcite-shell-panel slot="panel-start" display-mode="float">
       <calcite-action-bar slot="action-bar">
-        <calcite-action data-action-id="about" icon="information" text="Information about application"></calcite-action>
-        <calcite-action data-action-id="survey" icon="plus-circle" text="Add a kolache location"></calcite-action>
-        <calcite-action data-action-id="layers" icon="layers" text="Show Layers"></calcite-action>
-        <calcite-action data-action-id="basemaps" icon="basemap" text="Change Basemap"></calcite-action>
+        <calcite-action data-action-id="about" icon="information" text="About this map"></calcite-action>
+        <calcite-action data-action-id="survey" icon="plus-circle" text="Add a Kolache location"></calcite-action>
+        <calcite-action data-action-id="search" icon="search" text="Search Address OR Bakery nearby"></calcite-action>
+        <calcite-action data-action-id="editor" icon="layers-editable" text="Open Editor"></calcite-action>
+        <calcite-action data-action-id="layers" icon="layers" text="Select Layers"></calcite-action>
+        <calcite-action data-action-id="basemaps" icon="basemap" text="Change Basemaps"></calcite-action>
         <calcite-action data-action-id="legend" icon="legend" text="Show Legend"></calcite-action>
-        <calcite-action data-action-id="search" icon="search" text="Search for address"></calcite-action>
-        <calcite-action data-action-id="editor" icon="layers-editable" text="Editor"></calcite-action>
-        <calcite-action data-action-id="query" icon="data-magnifying-glass" text="Query"></calcite-action>
         <calcite-action data-action-id="credits" icon="credits" text="Source Credit"></calcite-action>
       </calcite-action-bar>
 
@@ -135,7 +134,7 @@ Note:
       <calcite-panel heading="Search Address OR Bakery nearby" height-scale="l" data-panel-id="search" hidden>
         <div id="search-container"></div>
       </calcite-panel>
-      <calcite-panel heading="Editor" height-scale="l" data-panel-id="editor" hidden>
+      <calcite-panel heading="" height-scale="l" data-panel-id="editor" hidden>
         <div id="editor-container"></div>
       </calcite-panel>
 
@@ -167,17 +166,6 @@ Note:
       </calcite-panel>
 
       <!-- Info panel (populates with info from the web map) deleted this last -->
-      <!-- Add a data query panel -->
-      <calcite-panel height-scale="l" heading="Query" data-panel-id="query" hidden>
-        <div id="query-container">
-          <h4 style="margin-top:0; margin-left: 3%;">How To:</h4>
-          <p class ="my-paragraph" >I am hitting a wall on how to set queries in MapViewer, or switch to straight map.</p>
-          <p class ="my-paragraph" >I am modifying PointAtrributeQuery.html to get definition query correct.</p>
-          <div style="display:flex; margin: 1rem 1rem;">
-                  
-          </div>
-        </div>
-      </calcite-panel>
 
       <!-- Credit panel -->
       <calcite-panel height-scale="l" heading="Credits" data-panel-id="credits" hidden>
@@ -261,8 +249,12 @@ Note:
 
     // add editor widget
     const editor = new Editor({
-      view, // view that provides access to the map's "layers" property
-      container: "editor-container"
+      view: view, // view that provides access to the map's "layers" property
+      container: "editor-container",
+      //override the ability to add data from Editor
+      visibleElements: {
+              createFeaturesSection: false
+            }
     });
 
     // Locator URL
